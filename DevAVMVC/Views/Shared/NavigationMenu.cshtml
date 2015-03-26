@@ -1,0 +1,38 @@
+﻿@Html.DevExpress().Menu(settings =>
+{
+    settings.Name = "NavigationMenu";
+    settings.Items.Add(item =>
+    {
+        item.Text = string.Empty;
+        item.Image.Url = ViewBag.PageLogoImageUrl;
+        item.Items.Add(subItem =>
+        {
+            subItem.Text = "Dashboard";
+            subItem.NavigateUrl = "Dashboard";
+        });
+        item.Items.Add(subItem =>
+        {
+            subItem.Text = "Customers";
+            subItem.NavigateUrl = "Customers";
+        });
+        item.Items.Add(subItem =>
+        {
+            subItem.Text = "Employees";
+            subItem.NavigateUrl = "Employees";
+        });
+        item.Items.Add(subItem =>
+        {
+            subItem.Text = "Tasks";
+            subItem.NavigateUrl = "Tasks";
+        });
+        item.Items.Add(subItem =>
+        {
+            subItem.Text = "Products";
+            subItem.NavigateUrl = "Products";
+        });
+        settings.ShowPopOutImages = DefaultBoolean.True;
+        settings.Images.HorizontalPopOut.Url = "Content/Images/LogoMenuIcons/PopOutIcon.png";
+        settings.ControlStyle.CssClass = "navigationMenu";
+        settings.Styles.SubMenu.CssClass = "navigationPopupMenu";
+    });
+}).GetHtml()

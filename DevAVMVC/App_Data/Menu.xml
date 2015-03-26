@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages>
+  <Dashboard>
+    <Item Name="Print" ToolTip="Print report" ImageUrl="Content/Images/MenuIcons/Print.png" BeginGroup="True" DropDownMode="True" ReportName="SalesOrdersSummary" />
+    <Item Name="ExportToSpreadsheet" ToolTip="Export to spreadsheet" ImageUrl="Content/Images/MenuIcons/Spreadsheet.png" ReportName="SalesOrdersSummary" />
+    <Item Name="PivotGrid" ToolTip="Toggle Pivot Grid panel visibility" ImageUrl="Content/Images/MenuIcons/Summary.png" BeginGroup="True" GroupName="PivotGrid" Checked="True" />
+    <Item Name="RevenueChart" ToolTip="Toggle Pie Chart panel visibility" ImageUrl="Content/Images/MenuIcons/Pie.png" GroupName="RevenueChart" Checked="True" />
+    <Item Name="OpportunitiesChart" ToolTip="Toggle Funnel Chart panel visibility" ImageUrl="Content/Images/MenuIcons/Funnel.png" GroupName="OpportunitiesChart" Checked="True" />
+    <Item Name="Filter" ToolTip="Custom filter" ImageUrl="Content/Images/MenuIcons/Filter.png" BeginGroup="True" />
+  </Dashboard>
+  <Customers>
+    <Item Name="New" Text="New" ToolTip="New customer" />
+    <Item Name="Delete" Text="Delete" ToolTip="Delete customer" />
+    <Item Name="Print" ToolTip="Print report" ImageUrl="Content/Images/MenuIcons/Print.png" BeginGroup="True" DropDownMode="True" ReportName="CustomerProfile">
+      <Item Name="FirstReport" Text="Profile Report" ReportName="CustomerProfile" />
+      <Item Name="SecondReport" Text="Contact Directory Report" ReportName="CustomerContactsDirectory" />
+      <Item Name="ThidrReport" Text="Sales Summary Report" ReportName="CustomerSalesSummary" />
+      <Item Name="FourthReport" Text="Sales Detail Report" ReportName="CustomerSalesDetail" />
+    </Item>
+    <Item Name="ExportToSpreadsheet" ToolTip="Export to spreadsheet" ImageUrl="Content/Images/MenuIcons/Spreadsheet.png" ReportName="CustomerSalesSummary" />
+    <Item Name="ShowPivotGrid" Text="Revenue Analysis" ToolTip="Show sales PivotGrid" BeginGroup="True" />
+    <Item Name="Filter" ToolTip="Custom filter" ImageUrl="Content/Images/MenuIcons/Filter.png" BeginGroup="True" />
+    <Item Name="ColumnsCustomization" ToolTip="Customize columns" ImageUrl="Content/Images/MenuIcons/ColumnCustomization.png" UrlDisabled="Content/Images/MenuIcons/ColumnCustomization_Disabled.png" GroupName="ColumnsCustomization" />
+  </Customers>
+  <Employees>
+    <Item Name="New" Text="New" ToolTip="New employee" />
+    <Item Name="Delete" Text="Delete" ToolTip="Delete employee" />
+    <Item Name="Print" ToolTip="Print report" ImageUrl="Content/Images/MenuIcons/Print.png" BeginGroup="True" DropDownMode="True" ReportName="EmployeeDirectory">
+      <Item Name="FirstReport" Text="Directory Report" ReportName="EmployeeDirectory" />
+      <Item Name="SecondReport" Text="List Report" ReportName="EmployeeSummary" />
+      <Item Name="ThidrReport" Text="Detail Report" ReportName="EmployeeProfile" />
+      <Item Name="FourthReport" Text="Task Report" ReportName="EmployeeTaskList" />
+    </Item>
+    <Item Name="ExportToSpreadsheet" ToolTip="Export to spreadsheet" ImageUrl="Content/Images/MenuIcons/Spreadsheet.png" ReportName="EmployeeDirectory" />
+    <Item Name="Meeting" Text="Meeting" ToolTip="Plan Meeting" BeginGroup="True" />
+    <Item Name="Task" Text="Task" ToolTip="New task" />
+    <Item Name="GridView" ToolTip="GridView mode" ImageUrl="Content/Images/MenuIcons/GridView.png" GroupName="View" />
+    <Item Name="CardsView" ToolTip="CardsView mode" ImageUrl="Content/Images/MenuIcons/CardView.png" GroupName="View" />
+    <Item Name="Filter" ToolTip="Custom filter" ImageUrl="Content/Images/MenuIcons/Filter.png" BeginGroup="True" />
+    <Item Name="ColumnsCustomization" ToolTip="Customize columns" ImageUrl="Content/Images/MenuIcons/ColumnCustomization.png" UrlDisabled="Content/Images/MenuIcons/ColumnCustomization_Disabled.png" GroupName="ColumnsCustomization" />
+  </Employees>
+  <Tasks>
+    <Item Name="New" Text="New" ToolTip="New task" />
+    <Item Name="Print" ToolTip="Print report" ImageUrl="Content/Images/MenuIcons/Print.png" BeginGroup="True" DropDownMode="True" ReportName="TaskList" />
+    <Item Name="GridView" ToolTip="GridView mode" ImageUrl="Content/Images/MenuIcons/GridView.png" BeginGroup="True" GroupName="View" />
+    <Item Name="CardsView" ToolTip="CardsView mode" ImageUrl="Content/Images/MenuIcons/CardView.png" GroupName="View" />
+    <Item Name="Filter" ToolTip="Custom filter" ImageUrl="Content/Images/MenuIcons/Filter.png" BeginGroup="True" />
+  </Tasks>
+  <Products>
+    <Item Name="New" Text="New" ToolTip="New product" />
+    <Item Name="Delete" Text="Delete" ToolTip="Delete product" />
+    <Item Name="Print" ToolTip="Print report" ImageUrl="Content/Images/MenuIcons/Print.png" BeginGroup="True" DropDownMode="True" ReportName="ProductOrders">
+      <Item Name="FirstReport" Text="Order Details Report" ReportName="ProductOrders" />
+      <Item Name="SecondReport" Text="Sales Summary Report" ReportName="ProductSalesSummary" />
+      <Item Name="ThidrReport" Text="Specification Summary Report" ReportName="ProductProfile" />
+    </Item>
+    <Item Name="ExportToSpreadsheet" ToolTip="Export to spreadsheet" ImageUrl="Content/Images/MenuIcons/Spreadsheet.png" ReportName="ProductOrders" />
+    <Item Name="ShowPivotGrid" Text="Revenue Analysis" ToolTip="Show sales PivotGrid" BeginGroup="True" />
+    <Item Name="Filter" ToolTip="Custom filter" ImageUrl="Content/Images/MenuIcons/Filter.png" BeginGroup="True" />
+    <Item Name="ColumnsCustomization" ToolTip="Customize columns" ImageUrl="Content/Images/MenuIcons/ColumnCustomization.png" UrlDisabled="Content/Images/MenuIcons/ColumnCustomization_Disabled.png" GroupName="ColumnsCustomization" />
+  </Products>
+</Pages>

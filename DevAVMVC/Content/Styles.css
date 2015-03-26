@@ -1,0 +1,903 @@
+﻿body {
+    background-color: #E8E9ED;
+    min-width: 900px;
+    min-height: 480px;
+}
+body,
+form
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+h5 {
+    margin: 0;
+	color: gray;
+	white-space: nowrap;
+}
+h5 + span{
+	margin-bottom: 10px;
+    display: inline-block;
+}
+
+/*MastePage*/
+.mainSplitterContainer {
+    padding-right: 20px;
+}
+.mainSplitter,
+.mainSplitter .dxsplLCC  {
+	background-color: #E8E9ED;
+}
+.mainSplitter .dxsplLCC,
+.mainSplitter .mainContentPane .dxsplLCC {
+	padding: 0;
+}
+
+.mainSplitter .logoPane,
+.mainSplitter .toolbarPane,
+.mainSplitter .mainContentPane,
+.mainSplitter .footerImagePane,
+.mainSplitter .footerTextPane {
+	border: none;
+}
+.mainSplitter .logoPane .dxsplLCC,
+.mainSplitter .toolbarPane .dxsplLCC {
+    padding-top: 18px;
+}
+.toolbarPane .dxm-ltr {
+	float: left;
+}
+.mainSplitter .logoPane .dxsplLCC > img{
+	margin-left: 20px;
+}
+.mainSplitter .logoPane .navigationMenu.dxm-main {
+	margin: 0 0 30px 19px;
+}
+.mainSplitter .logoPane .navigationMenu.dxm-main,
+.mainSplitter .logoPane .navigationMenu.dxm-main .dxm-item,
+.mainSplitter .logoPane .navigationMenu.dxm-main .dxm-hovered{
+	background: none!important;
+    border: 0!important;
+}
+.mainSplitter .logoPane .navigationMenu.dxm-main .dxm-content{
+	padding: 0 0 4px!important;
+}
+.mainSplitter .logoPane .navigationMenu.dxm-main .dxm-popOut{
+	padding: 7px 10px 9px!important;
+}
+.mainSplitter .logoPane .navigationPopupMenu.dxm-popup .dxm-item,
+.mainSplitter .logoPane .navigationPopupMenu.dxm-popup .dxm-item a.dx{
+	color: #BF4E6A;
+}
+.mainSplitter .logoPane .navigationPopupMenu.dxm-popup .dxm-selected{
+	background-color: #BF4E6A;
+    color: white;
+}
+.mainSplitter .logoPane .navigationPopupMenu.dxm-popup .dxm-content{
+	padding: 11px 60px 11px 12px!important;
+}
+.mainSplitter .toolbarPane .dxm-main {
+    margin-left: -2px;
+}
+.mainSplitter .toolbarPane .dxm-image {
+    margin: -2px;
+}
+.mainSplitter .mainContentPane.frame .dxsplLCC {
+    border: 1px solid #c7c9cc;
+    background-color: #fafafa;
+}
+.mainSplitter .footerImagePane .dxsplLCC {
+    padding: 38px 27px;
+}
+.mainSplitter .footerTextPane .dxsplLCC {
+    padding: 30px 30px 30px 0;
+}
+.mainSplitter .footerTextPane .dxsplLCC div {
+    font-size: 16px;
+    color: #7f8082;
+
+    border-left: 1px solid #c7c9cc;
+    padding: 0 14px;
+}
+.mainSplitter .footerTextPane .dxsplLCC a {
+    color: #5e6d9d;
+}
+
+.searchBox
+{
+    float: right;
+    margin: 3px 1px 0 0;
+}
+.searchBox .button
+{
+    background: White!important;
+    border-color: White!important;
+    box-shadow: none!important;
+	-webkit-box-shadow: none!important;
+}
+.searchBox .button .sprite {
+	background: url("Images/Buttons/SearchButtonSprite.png") no-repeat;
+	height: 18px;
+	width: 18px;
+}
+.searchBox .button .sprite.hover {
+	background-position: -36px;
+}
+.searchBox .button .sprite.pressed {
+	background-position: -18px;
+}
+
+/*Customers GridView*/
+.customersCallbackPanel {
+    border-top: 1px solid #eeeeee;
+
+	padding: 10px 0 32px;
+	overflow: auto;
+}
+.customersCallbackPanel.expanded {
+    border: 1px solid #cbcbcb;
+    border-bottom: 0;
+    margin: 0 -1px;
+}
+.customersCallbackPanel .imageSliderMenuContainer,
+.customersCallbackPanel .imageSlider {
+	margin: auto;
+}
+.customersCallbackPanel .imageSliderMenuContainer td > span{
+	font-size: 18px;
+}
+.customersCallbackPanel .imageSliderMenuContainer td > span {
+	color: #BF4E6A;
+}
+.customersGridView .dxgvHSDC {
+    border-top: 0;
+}
+.customersGridView .dataTable,
+.customersGridView .dxgvHSDC,
+.customersGridView .dxgvCSD {
+    border-left: 0;
+    border-right: 0;
+}
+.customersGridView .groupPanel 
+{
+	border-bottom: 1px solid #CBCBCB;
+}
+.customersMenu.dxm-main {
+	margin: 10px 6px;
+}
+.customersMenu.dxm-main,
+.customersMenu.dxm-main .dxm-item,
+.customersMenu.dxm-main .dxm-hovered{
+	background: none!important;
+    border: 0!important;
+}
+.customersMenu.dxm-main .dxm-content{
+    color: #8a8a8a;
+    font-size: 18px;
+	padding: 2px 0!important;
+}
+.customersMenu.dxm-main .dxm-popOut{
+	padding: 12px 8px 8px!important;
+}
+.customersPopupMenu.dxm-popup .dxm-item,
+.customersPopupMenu.dxm-popup .dxm-item a.dx{
+	color: #BF4E6A;
+}
+.customersPopupMenu.dxm-popup .dxm-selected{
+	background-color: #BF4E6A;
+    color: white;
+}
+.customersPopupMenu.dxm-popup .dxm-content{
+	padding: 11px 60px 11px 12px!important;
+}
+
+/*Products GridView*/
+.productsDetailsPanel {
+    border-top: 1px solid #eeeeee;
+
+    padding: 20px;
+    overflow: auto;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.productsDetailsPanel.expanded {
+    border: 1px solid #cbcbcb;
+    border-bottom: 0;
+    margin: 0 -1px;
+}
+.productsDetailsPanel.expanded .productsDetailsMainContainer{
+    min-width: 820px;
+}
+.productsDetailsPanel.expanded .productsDetailsContainer{
+    padding: 0;
+    width: 100%;
+}
+.productsDetailsPanel.expanded .productInfo,
+.productsDetailsPanel.expanded .productDescription{
+    float: left;
+    width: 40%;
+}
+.productsDetailsPanel.expanded .productInfo{
+    min-width: 320px;
+}
+.productsDetailsPanel.expanded .productDescription{
+    width: 60%;
+    padding-left: 20px;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.productsDetailsPanel.expanded .productsPagesContainer{
+    display: none;
+}
+.productsGridView .dxgvCSD,
+.productsGridView .dxgvHSDC,
+.productsGridView .dataTable {
+    border-left: 0;
+    border-right: 0;
+}
+.productsGridView .dxgvHSDC,
+.productsGridView .dataTable .header {
+    border-top: 0;
+}
+.productsGridView .groupPanel 
+{
+	border-bottom: 1px solid #CBCBCB;
+}
+.productsDetailsMainContainer{
+    min-width: 1100px;
+}
+.productsDetailsContainer {
+	float: left;
+	width: 40%;
+    min-width: 320px;
+    padding: 0 12px 10px 0;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.productsDetailsContainer table {
+	margin-bottom: 10px;
+}
+.productsDetailsContainer .label,
+.productsPagesContainer .label {
+    font-size: 24px;
+    color: #BF4E6A;
+    margin-right: 20px;
+}
+.productsPagesContainer .dxpc-content {
+	text-align: center;
+}
+.productsDetailsContainer img {
+	padding: 3px;
+	border: 1px solid #D1D1D1;
+	margin-right: 14px;
+}
+.productsPagesContainer {
+	float: left;
+	width: 60%;
+}
+.productsPagesContainer .uploadControlContainer,
+.productsPagesContainer .dxisControl {
+	margin: 0 auto;
+}
+.salesChart {
+	margin: 0 auto;
+}
+.productsPagesContainer .dxisControl
+{
+	margin-top: 40px;
+}
+.productsPagesContainer .uploadControlContainer {
+	margin-top: 40px;
+}
+.productsPagesContainer .uploadControlContainer .dxbButtonSys {
+	margin-left: 4px;
+}
+.productsPagesContainer .uploadControlContainer .dxbButtonSys .dxb {
+	padding-bottom: 3px;
+}
+/*Employees CardView*/
+.employeesCardViewer .dvCard {
+	color: gray;
+	padding: 10px;
+	white-space: nowrap;
+	position: relative;
+}
+.employeesCardViewer .dvCard.focusCard {
+    background: #BF4E6A;
+}
+.employeesCardViewer .dvCard.focusCard,
+.employeesCardViewer .dvCard.focusCard h5 {
+	color: white;
+}
+.employeesCardViewer .dvCard td>img {
+    margin-right: 10px;
+	height: 122px;
+}
+.employeesCardViewer .dvCard>img {
+	position: absolute;
+	top: 5px;
+	visibility: hidden;
+	cursor: pointer;
+}
+.employeesCardViewer .dvCard.focusCard>img {
+	left: 270px;
+	visibility: visible;
+}
+.employeesCardViewer .dvCard.focusCard>img,
+.tasksCardViewer .item,
+.employeesCardViewer .item {
+	margin: 3px !important;
+}
+.employeesCardViewer .dvCard .textContainer,
+.employeesCardViewer .dvCard .textContainer h5 {
+	vertical-align: top;
+	width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+}
+.tasksCardViewer .item,
+.employeesCardViewer .item {
+	padding: 0;
+}
+.tasksCardViewer .content > div > table,
+.employeesCardViewer .content > div > table {
+	margin: 0px !important;
+}
+.emplName,
+.emplDepartment {
+	font-size: 24px;
+}
+.emplName {
+	color: #BF4E6A;
+}
+.emplDepartment {
+	color: #7E7E7E;
+}
+
+/*Employees GridView*/
+.employeesGridView {
+    outline: 0;
+}
+.employeesGridView .dxgvCSD {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+.employeesGridView .dataTable,
+.employeesGridView .dataTable td.dxgv {
+    border-top: 0!important;
+    border-bottom: 0!important;
+}
+.employeesGridView .dxgvHSDC {
+	border: 0 !important;
+}
+.employeesGridView .dataTable .header {
+    border-top: 0;
+}
+.employeesGridView .groupPanel 
+{
+	border-bottom: 1px solid #CBCBCB;
+}
+.employeesDetailsMainContainer{
+    min-width: 800px;
+}
+.employeesDetailsContainer {
+	float: left;
+	width: 40%;
+    min-width: 300px;
+    padding: 0 12px 0 0;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.employeesDetailsContainer table {
+	border-collapse: inherit;
+}
+.employeesDetailsHeadline {
+    margin-bottom: 12px;
+}
+.employeesDetailsHeadline .header {
+    margin-bottom: 0!important;
+    font: 1.71em 'Segoe UI','Helvetica Neue','Droid Sans',Arial,Tahoma,Geneva,Sans-serif;
+    color: #BF4E6A;
+    line-height: 141%!important;
+}
+.employeesDetailsHeadline .content {
+	color: gray;
+    font: 14px 'Segoe UI','Helvetica Neue','Droid Sans',Arial,Tahoma,Geneva,Sans-serif;
+    line-height: 130%!important;
+}
+.employeeEditButtonCell {
+    vertical-align: top;
+}
+.employeeEditButtonCell img {
+	margin: 10px 0 0 10px;
+    cursor: pointer;
+}
+.employeesDetailsInfo td {
+    vertical-align: middle;
+} 
+.employeesDetailsInfo img {
+	padding: 3px;
+	border: 1px solid #D1D1D1;
+	margin-right: 14px;
+}
+.employeesPagesContainer {
+	float: left;
+	width: 60%;
+}
+.emplCardViewDetailsPanel {
+	padding: 16px 20px 20px;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.emplGridViewDetailsPanel {
+    border-top: 1px solid #eeeeee !important;
+
+	padding: 20px;
+    overflow: auto;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.emplGridViewDetailsPanel.expanded {
+    border: 1px solid #cbcbcb;
+    border-bottom: 0;
+    margin: 0 -1px;
+}
+.emplCardViewDetailsPages {
+	margin-top: -16px;
+}
+.emplCardViewDetailsPages .dxtc-content,
+.emplGridViewDetailsPages .dxtc-content {
+	padding: 0 !important;
+}
+.emplEvaluationGridView .dataTable,
+.emplTasksGridView .dataTable {
+    border-left: 0;
+    border-right: 0;
+}
+.emplEvaluationGridView .dxgvHSDC,
+.emplTasksGridView .dxgvHSDC,
+.emplEvaluationGridView .dxgvCSD,
+.emplTasksGridView .dxgvCSD {
+	border: 0 !important;
+}
+.emplEvaluationGridView .dataTable .header,
+.emplTasksGridView .dataTable .header,
+.tasksGridView .dataTable .header {
+	border-right: none !important;
+}
+.emplEvaluationGridView .dxgvCSD td.dxgv,
+.emplTasksGridView .dxgvCSD td.dxgv,
+.emplEvaluationGridView .dxgvCSD tr:last-child td.dxgv,
+.emplTasksGridView .dxgvCSD tr:last-child td.dxgv {
+
+	border-bottom: 0!important;
+	border-right: 0!important;
+}
+.emplEvaluationGridView .focusRow,
+.emplTasksGridView .focusRow,
+.tasksGridView .focusRow {
+	background-color: #f7f8fa;
+    color: #343434;
+}
+.emplEvaluationGridView .commandColumn a,
+.emplTasksGridView .commandColumn a,
+.tasksGridView .commandColumn a {
+	visibility: hidden;
+}
+.emplEvaluationGridView .focusRow .commandColumn a,
+.emplTasksGridView .focusRow .commandColumn a,
+.tasksGridView .focusRow .commandColumn a {
+	visibility: visible;
+}
+.gridEditButton {
+	background-image: url("Images/Buttons/GridEditButtonSprite.png");
+	margin: 0 auto;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+.focusRow .gridEditButton {
+	background-position: 16px;
+}
+
+.dxbButton.blueButton,
+.emplTasksGridView .commandColumnBtn,
+.tasksGridView .commandColumnBtn,
+.emplEvaluationGridView .commandColumnBtn {
+	width: 50px;
+	height: 22px;
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	background-image: url("Images/Buttons/BlueButton.png");
+}
+
+.emplEditFormPopup .dxpc-content {
+	padding: 0 0 25px 5px;
+}
+.emplEditFormPopup .fullWidthEditorContainer {
+	padding-right: 32px;
+}
+.emplEditFormPopup .addressGroup .fullWidthTable,
+.emplEditFormPopup .fullWidthCell {
+	width: 100%;
+}
+.emplEditFormPopup .buttonsContainer,
+.evalEditFormPopup .buttonsContainer {
+	padding-right: 32px;
+	float: right;
+}
+.emplEditFormPopup .group > tbody > tr > td,
+.emplEditFormPopup .group,
+.evalEditFormPopup .group > tbody > tr > td,
+.evalEditFormPopup .group {
+	padding-right: 0;
+}
+.emplEditFormPopup .addressGroup .dxeButtonEditSys {
+	margin: 0 3px;
+}
+.evalEditFormPopup .dxflMemoItemSys {
+	padding-right: 32px;
+}
+.evalEditFormPopup .dxpc-content {
+	padding: 0 0 25px 17px;
+}
+
+
+/*Tasks GridView*/
+.tasksGridView .dataTable {
+    border-left: 0;
+    border-right: 0;
+}
+.tasksGridView .dataTable .header {
+    border-top: 0;
+}
+.tasksGridView .dataTable td.dxgv,
+.tasksGridView .dxgvCSD,
+.tasksGridView .dxgvHSDC {
+	border: none;
+}
+.tasksGridView .preview > td {
+    padding: 0;
+}
+.tasksGridView .preview > td > div {
+    padding: 12px 15px 12px 20px;
+}
+.taskEditFormPopup .dxflCaptionCellSys {
+	padding-right: 10px;
+}
+.taskEditFormPopup .subjectTextboxContainer .dxflCaptionCellSys {
+	padding-right: 42px;
+}
+.taskEditFormPopup .buttonsContainer {
+	float: right;
+	padding-right: 32px;
+}
+.taskEditFormPopup .dxpc-content {
+	padding: 0 0 25px 5px;
+}
+.taskEditFormPopup .group > tbody > tr > td,
+.taskEditFormPopup .group {
+	padding-right: 0;
+}
+
+/*Tasks CardView*/
+.tasksCardViewer .dvCard {
+	border: 1px solid #D9D9D9;
+	padding: 10px;
+}
+.taskCardHeader > span {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: bold;
+	width: 330px;
+	overflow: hidden;
+	float: left;
+}
+.taskCardHeader img {
+    float: right;
+	margin-right: 7px;
+}
+.taskCardContent {
+    margin-top: 12px;
+    height: 100px;
+}
+.taskCardData {
+    float: left;
+}
+.taskCardData td {
+    padding-right: 8px;
+}
+.taskCardData span {
+	color: #959595;
+	display: block;
+    margin-top: 8px;
+}
+.taskCardData .fullName {
+	color: black;
+	margin: 0;
+	width: 200px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.taskCardData .fullName span {
+	display: initial;
+}
+.taskCardProgress {
+    float: right;
+    width: 165px;
+    text-align: right;
+
+	font: 70px bold;
+	color: #BF4E6A;
+}
+.taskCardFooter {
+    height: 32px;
+    margin-top: 12px;
+    margin-left: -4px;
+}
+.taskCardComplete {
+    float: left;
+}
+.taskCardFooter .blueButton {
+    margin-top: 6px;
+}
+.tasksCardViewer .dvCard.focusCard {
+	background-color: #F7F7F7;
+}
+.tasksCardViewer .dvCard .dxbButtonSys {
+	visibility: hidden;
+}
+.tasksCardViewer .dvCard.focusCard .dxbButtonSys {
+	visibility: visible;
+}
+
+.blueButton {
+    border: 0!important;
+    padding: 0!important;
+	float: right;
+	margin-left: 4px;
+}
+
+/*NavBar*/
+.filterNavBar {
+	width: 100%;
+}
+
+/*Dashboard*/
+.dashboardTopZoneContainer {
+    margin-bottom: 1%;
+}
+.dashboardLeftZoneContainer,
+.dashboardRightZoneContainer {
+    float: left;
+    width: 49.5%
+}
+.dashboardLeftZoneContainer {
+    margin-right: 1%;
+}
+.dashboardPivotDockPanel .dxpc-content {
+	padding-left: 0;
+	padding-right: 0;
+	overflow-y: hidden !important;
+}
+.chartDockPanel .dxpc-content {
+	overflow: hidden !important;
+	text-align: center;
+}
+
+/*PivotGrid*/
+.progressBarCell {
+	width: 100%;
+	padding-right: 6px;
+}
+.progressValueCell {
+	width: 55px;
+	display: block;
+}
+.pivot > tbody > tr > td {
+	padding: 0 15px;
+}
+.pivot .dataArea,
+.pivot .columnArea {
+	border-top: none;
+}
+.pivot .header,
+.pivot .rowArea  {
+	width: 110px!important;
+}
+.pivot td {
+	background: none;
+}
+.pivot .salesCell {
+	width: 0px;
+	padding: 0 80px;
+	text-align: center;
+}
+
+.revenuePopup .pivot .salesCell,
+.pivotGridContainer .pivot .salesCell,
+.dashboardLeftZoneContainer .pivot .salesCell,
+.dashboardRightZoneContainer .pivot .salesCell {
+	padding: 0 20px;
+}
+
+/*Contacts & Stores ImageSlider's*/
+.imageSlider .dxis-nbItem {
+	color: gray;
+    border: 1px solid transparent;
+    padding: 4px 2px;
+    overflow: visible!important;
+	text-align: center;
+}
+.imageSlider .dxis-nbItem span {
+	font-weight: bold;
+	display: block;
+	color: black;
+}
+.imageSlider .dxis-nbItem .editButton{
+	position: absolute;
+	top: 5px;
+	visibility: hidden;
+	cursor: pointer;
+}
+.imageSlider .dxis-nbItem.dxis-selected {
+	border: 1px solid #dddddd;
+}
+.imageSlider .dxis-nbItem.dxis-selected .editButton {
+	left: 135px;
+	visibility: visible;
+}
+.imageSlider .dxis-nbItem.dxis-hover {
+	
+	border: 1px solid #cbcbcb;
+}
+.customersCallbackPanel .dxis-nbSelectedItem,
+.productsPagesContainer .dxis-nbSelectedItem,
+.dxisControl .dxis-nbItem.dxis-hover .dxis-nbHoverItem {
+	display: none;
+}
+
+.custEditFormPopup .dxpc-content {
+	padding: 0 0 25px 5px;
+}
+.custEditFormPopup .fullWidthEditorContainer {
+	padding-right: 32px;
+}
+.custEditFormPopup .fullWidthTable,
+.custEditFormPopup .fullWidthCell {
+	width: 100%;
+}
+.custEditFormPopup .buttonsContainer {
+	padding-right: 32px;
+	float: right;
+}
+.custEditFormPopup .group > tbody > tr > td,
+.custEditFormPopup .group {
+	padding-right: 0;
+}
+.custEditFormPopup .fullWidthTable .dxeButtonEditSys {
+	margin: 0 3px;
+}
+
+/* Popups */
+.filterPopup .dxpc-header,
+.revenuePopup .dxpc-header,
+.editFormPopup  .dxpc-header {
+	border-bottom: none;
+    padding: 20px 20px 8px;
+}
+.filterPopup .dxpc-header span,
+.revenuePopup .dxpc-header span,
+.editFormPopup .dxpc-header span {
+	color: #BF4E6A;
+	font-size: 14px;
+}
+.filterPopup .dxpc-content, 
+.filterPopup .dxpc-contentWrapper,
+.revenuePopup .dxpc-content, 
+.revenuePopup .dxpc-contentWrapper,
+.editFormPopup .dxpc-content,
+.editFormPopup .dxpc-contentWrapper {
+    background-color: #fafafa;
+}
+.revenuePopup .dxpc-footer
+{
+    height: 50px;
+    border: none!important;
+    padding-right: 20px;
+}
+.revenuePopup .dxpc-contentWrapper .dxpc-content
+{
+    padding-bottom: 0;
+}
+.filterPopup .filterControl {
+	border: 1px solid #E1E1E1;
+}
+.filterPopup .dxeTAR {
+	margin-top: 17px;
+}
+.filterPopup .dxeErrorFrameSys  {
+	padding: 2px 0;
+}
+.filterPopup .dxichCellSys {
+	padding-left: 1px;
+	padding-bottom: 3px;
+}
+.filterPopup .dxichCellSys span {
+	margin-left: 0;
+}
+.filterPopup .dxbButtonSys,
+.revenuePopup .dxbButtonSys {
+	float: right;
+	margin: 20px 0 20px 6px;
+}
+.revenuePopup .dxbButtonSys {
+	margin-top: 0;
+}
+.revenuePopup .dxbButtonSys {
+	margin-right: 15px;
+}
+.pageViewerPopup
+{
+	border: none !important;
+}
+.pageViewerPopup .dxpc-header
+{
+	border-bottom: 1px solid #EBEBEB;
+}
+.pageViewerPopup > .dxpc-contentWrapper > .dxpc-content
+{
+	padding: 0;
+}
+.reportContainer .dxsplCC .dxsplP .dxsplLCC
+{
+    border: none;
+	background: #FFFFFF;
+}
+
+.reportContainer .dxmLiteReportToolbarPane
+{
+	border: none;
+}
+.reportContainer .dxsplP > tbody > tr > td
+{
+	border: none;
+}
+
+.reportContainer,
+.spreadsheetContainer
+{
+    height: 100%;
+    margin: 0;
+    background: white;
+}
+.spreadsheetContainer .dxssControlSys 
+{
+	border: none;
+}
+.mainCallbackPanel
+.fullHeightContainer {
+	height: 100%;
+}
+
+.hgl,
+.dxgvHL
+{
+    background: #f49a00!important;
+}

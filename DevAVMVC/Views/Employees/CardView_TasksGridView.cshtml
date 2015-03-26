@@ -1,0 +1,102 @@
+﻿@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "CVTasksGridView";
+    settings.CallbackRouteValues = new { Controller = "Employees", Action = "CardView_TasksGridView" };
+    settings.KeyFieldName = "Id";
+    settings.PreviewFieldName = "Description";
+    settings.Width = Unit.Percentage(100);
+
+    settings.Columns.Add("Subject");
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "StartDate";
+        c.ColumnType = MVCxGridViewColumnType.DateEdit;
+        c.Width = 100;
+        (c.PropertiesEdit as DateEditProperties).AllowNull = true;
+    });
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "DueDate";
+        c.ColumnType = MVCxGridViewColumnType.DateEdit;
+        c.Width = 100;
+        (c.PropertiesEdit as DateEditProperties).AllowNull = true;
+    });
+    settings.Columns.Add(c =>
+    {
+        c.Caption = "Priority";
+        c.Width = 80;
+        c.SetDataItemTemplateContent((container) =>
+        {
+            var priority = (DevExpress.DevAV.EmployeeTaskPriority)container.Grid.GetRowValues(container.VisibleIndex, "Priority");
+            Html.DevExpress().Image(s =>
+            {
+                s.ImageUrl = DemoUtils.ImageLoader.GetPriorityImageUrl(priority);
+            }).Render();
+        });
+    });
+    settings.Columns.Add(c =>
+    {
+        c.Caption = "% Completed";
+        c.Width = 200;
+        c.SetDataItemTemplateContent((container) =>
+        {
+            var completion = Convert.ToInt32(container.Grid.GetRowValues(container.VisibleIndex, "Completion"));
+            ViewContext.Writer.Write(@"
+                <table>
+                    <tr>
+                        <td class='progressBarCell'>"
+            );
+            Html.DevExpress().ProgressBar(s =>
+            {
+                s.Name = "ProgressBar" + +container.VisibleIndex;
+                s.Properties.ShowPosition = false;
+                s.Position = completion;
+                s.Height = 10;
+                s.Width = Unit.Percentage(100);
+            }).Render();
+            ViewContext.Writer.Write(@"
+                        </td>
+                        <td>"
+            );
+            ViewContext.Writer.Write(completion);
+            ViewContext.Writer.Write(@"
+                        </td>
+                    </tr>
+                </table>"
+            );
+
+        });
+    });
+
+    settings.CommandColumn.Caption = " ";
+    settings.CommandColumn.Width = 120;
+    settings.CommandColumn.Visible = true;
+
+    // TODO
+    settings.CommandColumn.CustomButtons.Add(new GridViewCommandColumnCustomButton() { ID = "EditBtn", Text = "Edit" });
+    settings.CommandColumn.CustomButtons.Add(new GridViewCommandColumnCustomButton() { ID = "DeleteBtn", Text = "Delete" });
+
+    settings.Settings.ShowPreview = true;
+    settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+    settings.Settings.VerticalScrollableHeight = 170;
+    settings.Settings.GridLines = System.Web.UI.WebControls.GridLines.None;
+
+    settings.SettingsBehavior.AllowFocusedRow = true;
+    settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+
+    settings.ClientSideEvents.CustomButtonClick = "DevAV.Page.TaskGrid_CustomButtonClick";
+
+    settings.ControlStyle.CssClass = "emplTasksGridView";
+    settings.Styles.Table.CssClass = "dataTable";
+    settings.Styles.Header.CssClass = "header";
+    settings.Styles.FocusedRow.CssClass = "focusRow";
+    settings.Styles.CommandColumn.CssClass = "commandColumn";
+    settings.Styles.CommandColumnItem.CssClass = "commandColumnBtn";
+
+    settings.PreRender = (s, e) =>
+    {
+        (s as MVCxGridView).VisibleColumns[0].VisibleIndex = 100; // commandColumn
+    };
+
+}).Bind(Model).GetHtml()
+

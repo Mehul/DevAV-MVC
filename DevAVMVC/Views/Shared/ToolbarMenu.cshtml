@@ -1,0 +1,26 @@
+﻿@Html.DevExpress().Menu(settings =>
+{
+    settings.Name = "ToolbarMenu";
+    settings.ShowAsToolbar = true;
+    settings.ClientSideEvents.Init = "DevAV.ToolbarMenu_Init";
+    settings.ClientSideEvents.ItemClick = "DevAV.ToolbarMenu_ItemClick";
+
+    settings.ItemDataBound = (s, e) =>
+    {
+        var item = e.Item;
+        IHierarchyData itemHierarchyData = (IHierarchyData)item.DataItem;
+        var element = (System.Xml.XmlElement)itemHierarchyData.Item;
+        var attr = element.Attributes["BeginGroup"];
+        if (attr != null)
+            e.Item.BeginGroup = attr.Value == "True";
+        attr = element.Attributes["Checked"];
+        if (attr != null)
+            e.Item.Checked = attr.Value == "True";
+        attr = element.Attributes["DropDownMode"];
+        if (attr != null)
+            e.Item.DropDownMode = attr.Value == "True";
+        attr = element.Attributes["UrlDisabled"];
+        if (attr != null)
+            e.Item.Image.UrlDisabled = attr.Value;
+    };
+}).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/Menu.xml"), ViewBag.ToolbarMenuXPath).GetHtml()

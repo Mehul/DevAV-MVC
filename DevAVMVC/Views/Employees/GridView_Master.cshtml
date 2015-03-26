@@ -1,0 +1,73 @@
+﻿@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "EmployeesGrid";
+    settings.CallbackRouteValues = new { Controller = "Employees", Action = "GridView_Master" };
+    settings.KeyFieldName = "Id";
+    settings.KeyboardSupport = true;
+    settings.Width = Unit.Percentage(100);
+
+    settings.Columns.Add("FirstName");
+    settings.Columns.Add("LastName");
+    settings.Columns.Add("Title");
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "BirthDate";
+        c.ColumnType = MVCxGridViewColumnType.DateEdit;
+        c.Width = Unit.Percentage(15);
+        c.PropertiesEdit.DisplayFormatString = "MM/dd/yyyy";
+    });
+    settings.Columns.Add(c =>
+    {
+        c.Caption = "Details";
+        c.Width = Unit.Percentage(10);
+        c.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        c.SetDataItemTemplateContent((container) =>
+        {
+            ViewContext.Writer.Write("<div onclick='DevAV.GridEditButton_Click(event)' class='gridEditButton' title='Edit Employee'></div>");
+        });
+    });
+    settings.Columns.Add(c => { c.FieldName = "Department"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "Email"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "HomePhone"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "MobilePhone"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "PersonalProfile"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "Prefix"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "Skype"; c.Visible = false; });
+    settings.Columns.Add(c => { c.FieldName = "Status"; c.Visible = false; });
+
+    settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+    settings.Settings.VerticalScrollableHeight = 400;
+
+    settings.SettingsBehavior.AllowFocusedRow = true;
+    settings.SettingsBehavior.EnableCustomizationWindow = true;
+    settings.SettingsBehavior.AllowClientEventsOnLoad = false;
+
+    settings.SettingsPager.AlwaysShowPager = true;
+    settings.SettingsPager.ShowEmptyDataRows = true;
+    settings.SettingsPager.PageSize = 15;
+
+    settings.SettingsSearchPanel.ColumnNames = "FirstName;LastName;Title";
+
+    settings.SettingsPopup.CustomizationWindow.HorizontalAlign = PopupHorizontalAlign.LeftSides;
+    settings.SettingsPopup.CustomizationWindow.VerticalAlign = PopupVerticalAlign.Below;
+    settings.SettingsPopup.CustomizationWindow.Width = 220;
+    settings.SettingsPopup.CustomizationWindow.Height = 300;
+
+    settings.ClientSideEvents.Init = "DevAV.Page.EmployeesGrid_Init";
+    settings.ClientSideEvents.FocusedRowChanged = "DevAV.Page.EmployeesGrid_FocusedRowChanged";
+    settings.ClientSideEvents.EndCallback = "DevAV.Page.EmployeesGrid_EndCallback";
+    settings.ClientSideEvents.CustomizationWindowCloseUp = "DevAV.GridCustomizationWindow_CloseUp";
+
+    settings.ControlStyle.CssClass = "employeesGridView";
+    settings.Styles.Table.CssClass = "dataTable";
+    settings.Styles.Header.CssClass = "header";
+    settings.Styles.FocusedRow.CssClass = "focusRow";
+    settings.Styles.GroupPanel.CssClass = "groupPanel";
+
+    settings.Init = (s, e) =>
+    {
+        (s as MVCxGridView).SearchPanelFilter = ViewBag.SearchText;
+    };
+
+}).Bind(Model).GetHtml()
+

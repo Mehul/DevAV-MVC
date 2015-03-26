@@ -1,0 +1,20 @@
+﻿@Html.DevExpress().ButtonEdit(settings =>
+{
+    settings.Name = "SearchBox";
+    settings.Width = 200;
+    settings.ControlStyle.CssClass = "searchBox";
+
+    settings.Properties.NullText = "Type to Search...";
+    settings.Properties.ClientSideEvents.KeyDown = "DevAV.SearchBox_KeyDown";
+    settings.Properties.ClientSideEvents.TextChanged = "DevAV.SearchBox_TextChanged";
+    settings.Properties.ButtonStyle.CssClass = "button";
+    settings.Properties.NullTextStyle.Font.Italic = true;
+
+
+    var button = new EditButton();
+    settings.Properties.Buttons.Add(button);
+
+    button.Image.SpriteProperties.CssClass = "sprite";
+    button.Image.SpriteProperties.HottrackedCssClass = "hover";
+    button.Image.SpriteProperties.PressedCssClass = "pressed";
+}).GetHtml()

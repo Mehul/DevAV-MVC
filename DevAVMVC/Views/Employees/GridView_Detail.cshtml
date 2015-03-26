@@ -1,0 +1,99 @@
+﻿<div class="employeesDetailsMainContainer">
+    <div class="employeesDetailsContainer">
+        <table>
+            <tr>
+                <td>
+                    <div class="employeesDetailsHeadline">
+                        <div class="header">
+                            @if (Model != null)
+                            {
+                                ViewContext.Writer.Write(string.Format("{0} {1}", Model.FirstName, Model.LastName));
+                            }
+                            else
+                            {
+                                ViewContext.Writer.Write("None");
+                            }
+                        </div>
+                        <div class="content">
+                            @if (Model != null)
+                            {
+                                ViewContext.Writer.Write(Model.Title);
+                            }
+                            else
+                            {
+                                ViewContext.Writer.Write("None");
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table class="employeesDetailsInfo">
+            <tr>
+                <td>
+                    @Html.DevExpress().Image(settings =>
+               {
+                   settings.Name = "EmployeeImage";
+                   settings.Height = 170;
+                   settings.ImageUrl = Model != null ? DemoUtils.ImageLoader.EmployeeImageVirtPath(Model.Id) : string.Empty;
+               }).GetHtml()
+                </td>
+                <td>
+                    <h5>ADDRESS</h5>
+                    <span>
+                        @if (Model != null)
+                        {
+                            var address = Model.Address;
+                            ViewContext.Writer.Write(string.Format("{0} <br /> {1}, {2}, {3}", address.Line, address.City, address.State, address.ZipCode));
+                        }
+                        else
+                        {
+                            ViewContext.Writer.Write("None");
+                        }
+                    </span>
+                    <h5>PHONE</h5>
+                    <span>
+                        @if (Model != null)
+                        {
+                            ViewContext.Writer.Write(Model.HomePhone);
+                        }
+                        else
+                        {
+                            ViewContext.Writer.Write("None");
+                        }
+                    </span>
+                    <h5>EMAIL</h5>
+                    <span>
+                        @if (Model != null)
+                        {
+                            ViewContext.Writer.Write(Model.Email);
+                        }
+                        else
+                        {
+                            ViewContext.Writer.Write("None");
+                        }
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="employeesPagesContainer">
+        @if (Model != null)
+        {
+            @Html.DevExpress().PageControl(settings =>
+       {
+           settings.Name = "DetailsPageControl";
+           settings.ControlStyle.CssClass = "emplGridViewDetailsPages";
+           settings.Width = Unit.Percentage(100);
+           settings.TabPages.Add("Evaluations", "Evaluations").SetContent(() =>
+           {
+               Html.RenderAction("GridView_EvaluationsGridView");
+           });
+           settings.TabPages.Add("Tasks", "Tasks").SetContent(() =>
+           {
+               Html.RenderAction("GridView_TasksGridView");
+           });
+       }).GetHtml()
+        }
+    </div>
+</div>

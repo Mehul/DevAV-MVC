@@ -1,0 +1,14 @@
+﻿@Html.DevExpress().CallbackPanel(settings =>
+{
+    settings.Name = "MainCallbackPanel";
+    settings.CallbackRouteValues = new { Controller = "Employees", Action = "Index" };
+    settings.ControlStyle.CssClass = "mainCallbackPanel";
+
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("MainContent");
+        //ViewContext.Writer.Write(@"Employees View");
+    });
+    settings.ClientSideEvents.EndCallback = "DevAV.MainCallbackPanel_EndCallback";
+}
+).GetHtml()

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<States>
+  <State Name="AL" DisplayName="Alabama" />
+  <State Name="AK" DisplayName="Alaska" />
+  <State Name="AZ" DisplayName="Arizona" />
+  <State Name="AR" DisplayName="Arkansas" />
+  <State Name="CA" DisplayName="California" />
+  <State Name="CO" DisplayName="Colorado" />
+  <State Name="CT" DisplayName="Connecticut" />
+  <State Name="DE" DisplayName="Delaware" />
+  <State Name="FL" DisplayName="Florida" />
+  <State Name="GA" DisplayName="Georgia" />
+  <State Name="HI" DisplayName="Hawaii" />
+  <State Name="ID" DisplayName="Idaho" />
+  <State Name="IL" DisplayName="Illinois" />
+  <State Name="IN" DisplayName="Indiana" />
+  <State Name="IA" DisplayName="Iowa" />
+  <State Name="KS" DisplayName="Kansas" />
+  <State Name="KY" DisplayName="Kentucky" />
+  <State Name="LA" DisplayName="Louisiana" />
+  <State Name="ME" DisplayName="Maine" />
+  <State Name="MD" DisplayName="Maryland" />
+  <State Name="MA" DisplayName="Massachusetts" />
+  <State Name="MI" DisplayName="Michigan" />
+  <State Name="MN" DisplayName="Minnesota" />
+  <State Name="MS" DisplayName="Mississippi" />
+  <State Name="MO" DisplayName="Missouri" />
+  <State Name="MT" DisplayName="Montana" />
+  <State Name="NE" DisplayName="Nebraska" />
+  <State Name="NV" DisplayName="Nevada" />
+  <State Name="NH" DisplayName="New Hampshire" />
+  <State Name="NJ" DisplayName="New Jersey" />
+  <State Name="NM" DisplayName="New Mexico" />
+  <State Name="NY" DisplayName="New York" />
+  <State Name="NC" DisplayName="North" />
+  <State Name="ND" DisplayName="North Dakota" />
+  <State Name="OH" DisplayName="Ohio" />
+  <State Name="OK" DisplayName="Oklahoma" />
+  <State Name="OR" DisplayName="Oregon" />
+  <State Name="PA" DisplayName="Pennsylvania" />
+  <State Name="RI" DisplayName="Rhode Island" />
+  <State Name="SC" DisplayName="South Carolina" />
+  <State Name="SD" DisplayName="South Dakota" />
+  <State Name="TN" DisplayName="Tennessee" />
+  <State Name="TX" DisplayName="Texas" />
+  <State Name="UT" DisplayName="Utah" />
+  <State Name="VT" DisplayName="Vermont" />
+  <State Name="VA" DisplayName="Virginia" />
+  <State Name="WA" DisplayName="Washington" />
+  <State Name="WV" DisplayName="West Virginia" />
+  <State Name="WI" DisplayName="Wisconsin" />
+  <State Name="WY" DisplayName="Wyoming" />
+</States>
+
+

@@ -1,0 +1,23 @@
+﻿@Html.DevExpress().CallbackPanel(settings =>
+{
+    settings.Name = "DetailsCallbackPanel";
+    settings.CallbackRouteValues = new { Controller = "Employees", Action = "DetailCallbackPanel" };
+    settings.Width = Unit.Percentage(100);
+    settings.Collapsible = true;
+    settings.SettingsAdaptivity.CollapseAtWindowInnerHeight = 580;
+    settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToTop;
+    settings.SettingsCollapsing.AnimationType = AnimationType.Slide;
+    settings.SettingsCollapsing.ExpandButton.Position = PanelExpandButtonPosition.Far;
+    settings.ControlStyle.CssClass = "emplGridViewDetailsPanel";
+    settings.Styles.ExpandBar.Width = Unit.Percentage(100);
+    settings.Styles.ExpandedPanel.CssClass = "expanded";
+
+    settings.SetContent(() =>
+    {
+        if (ViewBag.IsGridView)
+            Html.RenderAction("GridView_Detail");
+        else
+            Html.RenderAction("CardView_Detail");
+    });
+}
+).GetHtml()

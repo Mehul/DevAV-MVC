@@ -1,0 +1,54 @@
+﻿@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "EvaluationGridView";
+    settings.CallbackRouteValues = new { Controller = "Employees", Action = "CardView_EvaluationsGridView" };
+    settings.KeyFieldName = "Id";
+    settings.Width = Unit.Percentage(100);
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "Subject";
+        c.SetDataItemTemplateContent((container) =>
+        {
+            var values = container.Grid.GetRowValues(container.VisibleIndex, "Subject", "Details") as object[];
+            ViewContext.Writer.Write(string.Format("<b>{0}</b><br />{1}", values[0], values[1]));
+        });
+    });
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "CreatedOn";
+        c.ColumnType = MVCxGridViewColumnType.DateEdit;
+        c.Width = 100;
+    });
+    settings.CommandColumn.Caption = " ";
+    settings.CommandColumn.Width = 120;
+    settings.CommandColumn.Visible = true;
+
+    // TODO
+    settings.CommandColumn.CustomButtons.Add(new GridViewCommandColumnCustomButton() { ID = "EvaluationEditBtn", Text = "Edit" });
+    settings.CommandColumn.CustomButtons.Add(new GridViewCommandColumnCustomButton() { ID = "EvaluationDeleteBtn", Text = "Delete" });
+
+    settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+    settings.Settings.VerticalScrollableHeight = 170;
+    settings.Settings.GridLines = System.Web.UI.WebControls.GridLines.None;
+
+    settings.SettingsBehavior.AllowFocusedRow = true;
+    settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+
+    settings.ClientSideEvents.CustomButtonClick = "DevAV.Page.EvaluationGrid_CustomButtonClick";
+
+    settings.ControlStyle.CssClass = "emplEvaluationGridView";
+    settings.Styles.Table.CssClass = "dataTable";
+    settings.Styles.Header.CssClass = "header";
+    settings.Styles.FocusedRow.CssClass = "focusRow";
+    settings.Styles.CommandColumn.CssClass = "commandColumn";
+    settings.Styles.CommandColumnItem.CssClass = "commandColumnBtn";
+
+
+    settings.PreRender = (s, e) =>
+    {
+        (s as MVCxGridView).VisibleColumns[0].VisibleIndex = 100; // commandColumn
+    };
+
+}).Bind(Model).GetHtml()
+

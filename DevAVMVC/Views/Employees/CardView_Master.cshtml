@@ -1,0 +1,42 @@
+﻿@Html.DevExpress().DataView(settings =>
+{
+    settings.Name = "EmployeeCardView";
+    settings.CallbackRouteValues = new { Controller = "Employees", Action = "CardView_Master" };
+    settings.PagerAlign = DevExpress.Web.PagerAlign.Right;
+    settings.Width = Unit.Percentage(100);
+    settings.Height = 400;
+    settings.Layout = DevExpress.Web.Layout.Flow;
+    settings.AlwaysShowPager = true;
+    settings.EnableScrolling = true;
+    settings.ControlStyle.CssClass = "employeesCardViewer";
+    settings.SettingsFlowLayout.ItemsPerPage = 10;
+
+    settings.PagerSettings.ShowNumericButtons = true;
+    settings.PagerSettings.Position = PagerPosition.Bottom;
+    settings.PagerSettings.Summary.Position = PagerButtonPosition.Left;
+
+    settings.Styles.Item.CssClass = "item";
+    settings.Styles.Item.Width = 300;
+    settings.Styles.Item.Height = 142;
+    settings.Styles.Content.CssClass = "content";
+
+    settings.ClientSideEvents.Init = "DevAV.CardView_Init";
+    settings.ClientSideEvents.EndCallback = "DevAV.CardView_EndCallback";
+
+    settings.CustomJSProperties = (s, e) =>
+    {
+        var visibleEmployees = (s as MVCxDataView).VisibleItems.Select(i => (DevExpress.DevAV.Employee)i.DataItem).ToList();
+        var employeeID = visibleEmployees.Count > 0 ? visibleEmployees[0].Id : DataProvider.emptyEntryID;
+        e.Properties["cpSelectedItemID"] = employeeID.ToString();
+    };
+
+    settings.SetItemTemplateContent(c =>
+    {
+        Html.RenderPartial("CardViewItem", c.DataItem as DevExpress.DevAV.Employee);
+    });
+    settings.PagerSettings.ShowNumericButtons = true;
+    settings.PagerSettings.AllButton.Visible = false;
+    settings.PagerSettings.Summary.Visible = false;
+    settings.PagerSettings.PageSizeItemSettings.Visible = true;
+    settings.PagerSettings.PageSizeItemSettings.ShowAllItem = true;
+}).Bind(Model).GetHtml()

@@ -1,0 +1,31 @@
+﻿<span class="emplName">
+    @if (Model != null)
+    {
+        ViewContext.Writer.Write(Model.FullName);
+    }
+</span>&nbsp;&nbsp;
+<span class="emplDepartment">
+    @if (Model != null)
+    {
+        ViewContext.Writer.Write(Model.Department.ToString());
+    }
+</span>
+@if (Model != null)
+{
+    @Html.DevExpress().PageControl(settings =>
+{
+    settings.Name = "DetailsPageControl";
+    settings.ControlStyle.CssClass = "emplCardViewDetailsPages";
+    settings.Width = Unit.Percentage(100);
+    settings.TabAlign = TabAlign.Right;
+
+    settings.TabPages.Add("Evaluations", "Evaluations").SetContent(() =>
+    {
+        Html.RenderAction("CardView_EvaluationsGridView");
+    });
+    settings.TabPages.Add("Tasks", "Tasks").SetContent(() =>
+    {
+        Html.RenderAction("CardView_TasksGridView");
+    });
+}).GetHtml()
+}

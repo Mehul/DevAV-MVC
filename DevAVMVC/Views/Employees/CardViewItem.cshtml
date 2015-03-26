@@ -1,0 +1,32 @@
+﻿<div id="@Model.Id" class="dvCard">
+    @Html.DevExpress().Image(s =>
+{
+    s.ImageUrl = "Content/Images/Buttons/EditCustomerButton_White.png";
+}).GetHtml()
+    <table>
+        <tr>
+            <td>
+                @Html.DevExpress().Image(s =>
+           {
+               s.ImageUrl = DemoUtils.ImageLoader.EmployeeImageVirtPath(Model.Id);
+               s.Width = 100;
+           }).GetHtml()
+            </td>
+            <td class="textContainer">
+                <h5>
+                    @DemoUtils.HighlightSearchText(Model.FirstName, ViewBag.SearchText)
+                    @DemoUtils.HighlightSearchText(Model.LastName, ViewBag.SearchText)
+                </h5>
+                <br />
+                @Model.Address.Line
+                <br />
+                @string.Format("{0}, {1}", Model.Address.City, Model.Address.State)
+                <br />
+                @Model.MobilePhone
+                <br />
+                @Model.Email
+            </td>
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Styles.css")" rel="stylesheet" type="text/css" />
+
+    @Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+)
+    @Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new Script { ExtensionSuite = ExtensionSuite.GridView },
+    new Script { ExtensionSuite = ExtensionSuite.Editors }
+)
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Scripts.js")"></script>
+</head>
+
+<body>
+@Html.DevExpress().Splitter(settings =>
+{
+    settings.Name = "splitter"; //Same name use for ClientInstance
+    settings.FullscreenMode = true;
+    settings.Orientation = Orientation.Vertical;
+    settings.AllowResize = false;
+    settings.SeparatorVisible = false;
+    settings.ControlStyle.CssClass = "mainSplitter";
+    settings.ClientSideEvents.PaneResized = "DevAV.Splitter_PaneResized";
+
+    settings.Panes.Add(topPane =>
+    {
+        topPane.Panes.Add(p =>
+        {
+            p.Size = 210;
+            p.MinSize = 210;
+            p.PaneStyle.CssClass = "logoPane";
+            p.SetContent(() =>
+            {
+                Html.DevExpress().Image(s =>
+                {
+                    s.Name = "MainLogo";
+                    s.Properties.ShowLoadingImage = true;
+                    s.ImageUrl = "/Content/Images/MainLogo.png";
+                }).GetHtml();
+                Html.RenderPartial("NavigationMenu");
+            });
+        });
+        topPane.Panes.Add(rp =>
+        {
+            rp.MinSize = 300;
+            rp.Panes.Add(p =>
+            {
+                p.Size = 60;
+                p.PaneStyle.CssClass = "toolbarPane";
+                p.SetContent(() =>
+                {
+                    Html.RenderPartial("ToolbarMenu");
+                    if (ViewBag.ShowSearchBox) //Searchbox is not in all views
+                        Html.RenderPartial("SearchBox");
+                });
+            });
+            rp.Panes.Add(p =>
+            {
+                p.Name = "MainContentPane";
+                p.ScrollBars = ScrollBars.None;
+                p.PaneStyle.CssClass = "mainContentPane frame";
+                p.SetContent(RenderBody().ToHtmlString());
+            });
+        });
+    });
+    
+    settings.Panes.Add(footerPane =>
+    {
+        footerPane.Size = 90;
+        footerPane.Panes.Add(p =>
+        {
+            p.Size = 210;
+            p.PaneStyle.CssClass = "footerImagePane";
+            p.SetContent(() =>
+            {
+                @Html.DevExpress().HyperLink(s =>
+                {
+                    s.Name = "hlLogo";
+                    s.NavigateUrl = "http://devexpress.com";
+                    s.Properties.ImageUrl = "/Content/Images/FooterLogo.png";
+                }).GetHtml();
+            });
+        });
+        footerPane.Panes.Add(p =>
+        {
+            p.PaneStyle.CssClass = "footerTextPane";
+            p.SetContent(() =>
+            {
+                ViewContext.Writer.Write(@"
+                    <div>
+                        Powered by DevExpress ASP.NET Controls <br />
+                        <a href=""https://go.devexpress.com/Demo_2013_DownloadTrial.aspx"">Download your free 30-day trial</a>
+                    </div>"
+                );
+            });
+        });
+    });
+}).GetHtml()
+
+</body>
+</html>
