@@ -241,7 +241,19 @@ window.DevAV = (function () {
     })();
 
     function getCurrentPage() {
-        return employeePage;
+        var pageName = DevAVPageName;
+        switch (pageName) {
+            case "Dashboard":
+                return dashboardPage;
+            case "Employees":
+                return employeePage;
+            case "Customers":
+                return customerPage;
+            case "Products":
+                return productPage;
+            case "Tasks":
+                return taskPage;
+        }
     };
     var page = getCurrentPage();
 
