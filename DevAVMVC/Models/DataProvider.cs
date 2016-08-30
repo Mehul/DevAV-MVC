@@ -22,11 +22,10 @@ public static class DataProvider {
     static DevAVDb DataContext {
         get {
             var storageKey = "C47520FF-2FFA-4468-9C22-E6BD4C2FC0C0";
-            if(!Context.Items.Contains(storageKey)) {
-                var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DevAVConnectionString"].ConnectionString;
-                connectionString = DbEngineDetector.PatchConnectionString(connectionString);
-                Context.Items[storageKey] = new DevAVDb(connectionString);
-            }
+            if(Context == null)
+                return GetDataContext();
+            if(!Context.Items.Contains(storageKey))
+                Context.Items[storageKey] = GetDataContext();
             return (DevAVDb)Context.Items[storageKey];
         }
     }
@@ -35,20 +34,23 @@ public static class DataProvider {
     public static long emptyEntryID = -1;
     public static string DatabaseVersion {
         get {
-            if(string.IsNullOrEmpty(databaseVersion))
-                databaseVersion = DataContext.Version.First().Date.ToString("dd_mm_yyyy-HH_mm_ss");
+            //if(string.IsNullOrEmpty(databaseVersion))
+            //    databaseVersion = DataContext.Version.First().Date.ToString("dd_MM_yyyy-HH_mm_ss");
+
+            databaseVersion = "0";
             return databaseVersion;
         }
     }
 
     public static IQueryable<Employee> Employees { get { return DataContext.Employees; } }
-    public static IQueryable<EmployeeTask> EmployeeTasks { get { return DataContext.Tasks; } }
+    public static IQueryable<EmployeeTask> EmployeeTasks { get { return DataContext.Tasks.Where(t => t.AssignedEmployeeId != null && t.OwnerId != null); } }
     public static IQueryable<Customer> Customers { get { return DataContext.Customers; } }
-    public static IQueryable<Product> Products { get { return DataContext.Products; } }
+    public static IQueryable<Product> Products { get { return DataContext.Products.Where(p => p.EngineerId != null && p.SupportId != null); } }
     public static IQueryable<CustomerEmployee> CustomerEmployees { get { return DataContext.CustomerEmployees; } }
     public static IQueryable<Evaluation> Evaluations { get { return DataContext.Evaluations; } }
     public static IQueryable<State> States { get { return DataContext.States; } }
     public static IQueryable<Crest> Crests { get { return DataContext.Crests; } }
+    public static IQueryable<Order> Orders { get { return DataContext.Orders; } }
     public static IQueryable<OrderItem> OrderItems { get { return DataContext.OrderItems.Where(i => i.Order.OrderDate < DateTime.Now); } }
     public static IQueryable<QuoteItem> QuoteItems { get { return DataContext.QuoteItems.Where(i => i.Quote.Date < DateTime.Now); } }
     public static IQueryable<CustomerStore> CustomerStores { get { return DataContext.CustomerStores; } }
@@ -71,6 +73,7 @@ public static class DataProvider {
         var employee = Employees.FirstOrDefault(e => e.Id == id);
         if(employee == null)
             return;
+        DeleteEmployeeRelations(id);
         DataContext.Employees.Remove(employee);
         DataContext.SaveChanges();
     }
@@ -133,6 +136,13 @@ public static class DataProvider {
         return productSalesChartData[product.Id];
     }
 
+    static DevAVDb GetDataContext() {
+        DevExpress.DemoData.DemoDbContext.IsWebModel = true;
+
+        var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DevAVConnectionString"].ConnectionString;
+        connectionString = DbEngineDetector.PatchConnectionString(connectionString);
+        return new DevAVDb(connectionString);
+    }
     static Dictionary<long, List<DataEntryInfo>> CreateProductSalesChartData() {
         return OrderItems.GroupBy(q => q.ProductId)
             .Select(g => new {
@@ -148,6 +158,43 @@ public static class DataProvider {
                 V = g.GroupBy(q => q.Quote.Date.Year)
                     .Select(yg => new { Year = yg.Key, Total = yg.Sum(i => i.Total) }).OrderBy(i => i.Year).ToList()
             }).ToDictionary(i => i.K, i => i.V.Select(e => new DataEntryInfo() { Name = e.Year.ToString(), Value = e.Total }).ToList());
+    }
+    static void DeleteEmployeeRelations(long id) {
+        var tasks = DataContext.Tasks.Where(task => task.OwnerId == id || task.AssignedEmployeeId == id);
+        foreach(var task in tasks) {
+            if(task.OwnerId == id)
+                task.OwnerId = null;
+            if(task.AssignedEmployeeId == null)
+                task.AssignedEmployeeId = null;
+        }
+
+        var evaluations = DataContext.Evaluations.Where(ev => ev.CreatedById == id || ev.EmployeeId == id);
+        foreach(var evaluation in evaluations) {
+            if(evaluation.CreatedById == id)
+                evaluation.CreatedById = null;
+            if(evaluation.EmployeeId == id)
+                evaluation.EmployeeId = null;
+        }
+
+        var products = DataContext.Products.Where(p => p.EngineerId == id || p.SupportId == id);
+        foreach(var product in products) {
+            if(product.EngineerId == id)
+                product.EngineerId = null;
+            if(product.SupportId == id)
+                product.SupportId = null;
+        }
+
+        var orders = DataContext.Orders.Where(o => o.EmployeeId == id);
+        foreach(var order in orders)
+            order.EmployeeId = null;
+
+        var quotes = DataContext.Quotes.Where(q => q.EmployeeId == id).ToList();
+        foreach(var quote in quotes)
+            quote.EmployeeId = null;
+
+        var communications = DataContext.Communications.Where(c => c.EmployeeId == id);
+        foreach(var communication in communications)
+            communication.EmployeeId = null;
     }
 }
 
