@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,10 +34,8 @@ public static class DataProvider {
     public static long emptyEntryID = -1;
     public static string DatabaseVersion {
         get {
-            //if(string.IsNullOrEmpty(databaseVersion))
-            //    databaseVersion = DataContext.Version.First().Date.ToString("dd_MM_yyyy-HH_mm_ss");
-
-            databaseVersion = "0";
+            if(string.IsNullOrEmpty(databaseVersion))
+                databaseVersion = DataContext.Version.First().Date.ToString("dd_MM_yyyy-HH_mm_ss");
             return databaseVersion;
         }
     }
