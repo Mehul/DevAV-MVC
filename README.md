@@ -1,3 +1,12 @@
+# Steps to RUN this sample
+
+1. Install the [latest DevExpress](https://devexpress.com)
+2. Download or clone this project 
+3. Copy the DevAV.mdf from DevExpress Demos (C:\Users\Public\Documents\DevExpress Demos 16.1\Components\ASP.NET\CS\DevAV\App_Data\DevAV.mdf) to the AppData folder
+4. Open Solution in Visual Studio
+5. If you have a newer version, run the DevExpress [Project Converter](https://www.youtube.com/watch?v=08vtxpe6jLA) and upgrade the project references/assemlby versions.
+
+
 # DevAV MVC (How to create an MVC version of the DevExpress ASP.NET demo [DevAV](https://demos.devexpress.com/rwa/devav/))
 
 To learn about this project, watch this webinar:
